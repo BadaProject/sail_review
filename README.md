@@ -1,12 +1,8 @@
-# Flight Review
+# Sail Review
 
-This is a web application for flight log analysis. It allows users to upload
-ULog flight logs, and analyze them through the browser.
+sail log 분석을 위한 웹 어플리케이션이다. 사용자가 ULog sail logs를 업로드하고 분석할 수 있다.
 
-It uses the [bokeh](http://bokeh.pydata.org) library for plotting and the
-[Tornado Web Server](http://www.tornadoweb.org).
-
-Flight Review is deployed at https://review.px4.io.
+[bokeh](http://bokeh.pydata.org) library를 사용하여 차트를 그리고 [Tornado Web Server](http://www.tornadoweb.org)를 사용한다.
 
 ![Plot View](screenshots/plot_view.png)
 
@@ -14,9 +10,9 @@ Flight Review is deployed at https://review.px4.io.
 ![3D View](screenshots/3d_view.gif)
 
 
-## Installation and Setup
+## 설치 및 설정
 
-### Requirements
+### 요구사항
 
 - Python3 (3.6+ recommended)
 - SQLite3
@@ -35,21 +31,12 @@ install ATLAS
 sudo apt-get install libatlas3-base
 ```
 
-#### macOS
-
-macOS already provides SQLite3.
-Use [Homebrew](https://brew.sh) to install fftw:
-
-```bash
-brew install fftw
-```
-
-### Installation
+### 설치
 
 ```bash
 # After git clone, enter the directory
-git clone --recursive https://github.com/PX4/flight_review.git
-cd flight_review/app
+git clone --recursive https://github.com/BadaProject/sail_review.git
+cd sail_review/app
 pip install -r requirements.txt
 # Note: preferably use a virtualenv
 
@@ -59,7 +46,7 @@ git submodule update --init --recursive
 
 ### Setup
 
-Initialize the Database as following:
+DB 초기화 :
 
 ```bash
 ./app/setup_db.py
@@ -67,7 +54,7 @@ Initialize the Database as following:
 
 **Note:** `setup_db.py` can also be used to upgrade the database tables, for instance when new entries are added (it automatically detects that).
 
-#### Settings
+#### 설정
 
 - By default the app will load `config_default.ini` configuration file
 - You can override any setting from `config_default.ini` with a user config file
@@ -75,7 +62,7 @@ Initialize the Database as following:
 - Any setting on `config_user.ini` has priority over
   `config_default.ini`
 
-## Usage
+## 사용법
 
 For local usage, the server can be started directly with a log file name,
 without having to upload it first:
@@ -188,7 +175,7 @@ docker-compose -f docker-compose.dev.yml up
 ```
 
 ### Test Locally
-Test locally with nginx:
+nginx로 로컬 테스트:
 
 ```bash
 docker-compose up
