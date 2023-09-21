@@ -95,9 +95,9 @@ def get_info_table_html(ulog, px4_ulog, db_data, vehicle_data, vtol_states):
     if airframe_name_tuple is not None:
         airframe_name, airframe_id = airframe_name_tuple
         if len(airframe_name) == 0:
-            table_text_left.append(('Airframe', airframe_id))
+            table_text_left.append(('Frame', airframe_id))
         else:
-            table_text_left.append(('Airframe', airframe_name+' <small>('+airframe_id+')</small>'))
+            table_text_left.append(('Frame', airframe_name+' <small>('+airframe_id+')</small>'))
 
 
     # HW & SW
@@ -269,7 +269,7 @@ SDLOG_UTC_OFFSET: {}'''.format(utctimestamp.strftime('%d-%m-%Y %H:%M'), utc_offs
             max_speed = np.amax(speed_vector)
             if vtol_states is None:
                 mean_speed = np.mean(speed_vector)
-                table_text_right.append(('Average Speed', "{:.1f} km/h".format(mean_speed*3.6)))
+                table_text_right.append(('Average Speed', "{:.1f} kn".format(mean_speed*3.6)))
             else:
                 local_pos_timestamp = local_pos.data['timestamp'][local_vel_valid_indices]
                 speed_vector = speed_vector.reshape((len(speed_vector),))
@@ -277,14 +277,14 @@ SDLOG_UTC_OFFSET: {}'''.format(utctimestamp.strftime('%d-%m-%Y %H:%M'), utc_offs
                     vtol_states, local_pos_timestamp, speed_vector)
                 if mean_speed_mc is not None:
                     table_text_right.append(
-                        ('Average Speed MC', "{:.1f} km/h".format(mean_speed_mc*3.6)))
+                        ('Average Speed MC', "{:.1f} kn".format(mean_speed_mc*3.6)))
                 if mean_speed_fw is not None:
                     table_text_right.append(
-                        ('Average Speed FW', "{:.1f} km/h".format(mean_speed_fw*3.6)))
-            table_text_right.append(('Max Speed', "{:.1f} km/h".format(max_speed*3.6)))
-            table_text_right.append(('Max Speed Horizontal', "{:.1f} km/h".format(max_h_speed*3.6)))
-            table_text_right.append(('Max Speed Up', "{:.1f} km/h".format(np.amax(-vel_z)*3.6)))
-            table_text_right.append(('Max Speed Down', "{:.1f} km/h".format(-np.amin(-vel_z)*3.6)))
+                        ('Average Speed FW', "{:.1f} kn".format(mean_speed_fw*3.6)))
+            table_text_right.append(('Max Speed', "{:.1f} kn".format(max_speed*3.6)))
+            table_text_right.append(('Max Speed Horizontal', "{:.1f} kn".format(max_h_speed*3.6)))
+            # table_text_right.append(('Max Speed Up', "{:.1f} km/h".format(np.amax(-vel_z)*3.6)))
+            # table_text_right.append(('Max Speed Down', "{:.1f} km/h".format(-np.amin(-vel_z)*3.6)))
 
             table_text_right.append(('', '')) # spacing
 
