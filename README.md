@@ -52,10 +52,12 @@ DB 초기화 :
 ./app/setup_db.py
 ```
 
-**Note:** `setup_db.py` can also be used to upgrade the database tables, for instance when new entries are added (it automatically detects that).
+**Note:** `setup_db.py` 으로 DB table을 업그레이드하는데 사용할 수 있다. 예를 들면 새로운 entries가 추가되는 경우(자동으로 검출).
 
 #### 설정
 
+- 기본적으로 app은 `config_default.ini` 설정 파일을 로드한다.
+- ...
 - By default the app will load `config_default.ini` configuration file
 - You can override any setting from `config_default.ini` with a user config file
   `config_user.ini` (untracked)
@@ -137,13 +139,13 @@ It's useful to look at `print('\n'.join(sys.modules.keys()))` to check this.
 
 # Docker usage
 
-This section explains how to work with docker.
+docker로 작업하는 방법을 알아보자.
 
 ## Arguments
 
-Edit the `.env` file according to your setup:
+설정을 위해서 `.env` 파일을 수정한다.
 
-- PORT - The number of port, what listen service in docker, default 5006
+- PORT - docker에서 service listen을 위한 port number. 기본값은 5006
 - USE_PROXY - The set his, if you use reverse proxy (Nginx, ...)
 - DOMAIN - The address domain name for origin, default = *
 - CERT_PATH - The SSL certificate volume path
@@ -162,12 +164,12 @@ cd app
 docker build -t px4flightreview -f Dockerfile .
 ```
 
-## Work with docker-compose
-Run the following command to start docker container.
-Please modify the `.env` and add `app/config_user.ini` with respective stages.
+## docker-compose로 작업하기
+docker container를 구동시키기 위해서 아래 명령을 실행한다.
+`.env`를 수정하고 `app/config_user.ini`를 추가한다.
 
-Uncomment the `BOKEH_ALLOW_WS_ORIGIN` with your local IP Address when
-developing, this is for the bokeh application's websocket to work.
+개발할때는 로컬 IP 주소로 `BOKEH_ALLOW_WS_ORIGIN` 부분을 코멘트를 해제한다. 이렇게 해야
+bokeh application의 websocket이 동작한다.
 
 ### Development
 ```bash
@@ -181,8 +183,7 @@ nginx로 로컬 테스트:
 docker-compose up
 ```
 
-Remember to Change `NGINX_CONF` to use `default_ssl.conf` and add the `EMAIL`
-for production.
+`default_ssl.conf`를 사용하기 위해서 `NGINX_CONF`를 변경하는 것을 기억하고, `EMAIL`을 추가한다.
 
 ### Production
 ```bash
@@ -191,7 +192,3 @@ htpasswd -c ./nginx/.htpasswd username
 chmod u+x init-letsencrypt.sh
 ./init-letsencrypt.sh
 ```
-
-## Contributing
-Contributions are welcome! Just open a pull request with detailed description
-why the changes are needed, or open an issue for bugs, feature requests, etc...
