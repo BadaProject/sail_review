@@ -1,11 +1,11 @@
 
 {% include 'header.html' %}
 
-<h3>Upload a Log File</h3>
+<h3>Log File 올리기</h3>
 
 <p>
-Select and upload a log file for plotting and analysis.
-You can browse through public log files on <a href="/browse">this page</a>.
+차트 분석을 원하는 log 파일을 업로드하세요.
+업로드된 로그 파일을 보려면 <a href="/browse">여기를</a> 클릭하세요.
 </p>
 
 
@@ -26,8 +26,8 @@ You can browse through public log files on <a href="/browse">this page</a>.
 		<table class="spaced">
 			<form enctype="multipart/form-data" action="/upload" method="post">
 				<tr>
-					<td colspan="2">Personal and private uploads:
-						others will only see the log if you share the link.</td>
+					<td colspan="2">개인 업로드:
+						공유한 log 파일만 다른 사람이 볼 수 있습니다.</td>
 				</tr>
 				<tr>
 					<td></td><td>
@@ -41,28 +41,27 @@ You can browse through public log files on <a href="/browse">this page</a>.
 					</td>
 				</tr>
 				<tr>
-					<td class="left">Additional Feedback <small>(optional)</small>:</td>
+					<td class="left">추가 피드백 <small>(옵션)</small>:</td>
 					<td>
 						<textarea class="form-control" cols="20" rows="3" name="feedback"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">E-Mail <small>(optional)</small>:</td>
+					<td class="left">E-Mail <small>(옵션)</small>:</td>
 					<td>
 						<input class="form-control" type="text" name="email" />
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><small>Will only be used to send you a link to
-							the uploaded file and is not stored on the server.</small></td>
+					<td colspan="2"><small>업로드한 파일에 대한 링크 전달용으로 사용되며 서버에 저장하지 않습니다.</small></td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<div class="custom-control custom-checkbox">
 							<input class="custom-control-input" name="allowForAnalysis"
 							id="allowForAnalysis" type="checkbox" value="true">
-							<label class="custom-control-label" for="allowForAnalysis">Allow
-							this log file to be used for statistical analysis.</label>
+							<label class="custom-control-label" for="allowForAnalysis">이 log 파일이 분석용으로
+							사용되는 것을 허용합니다.</label>
 						</div>
 					</td>
 				</tr>
@@ -101,10 +100,8 @@ You can browse through public log files on <a href="/browse">this page</a>.
 		<table class="spaced">
 			<form enctype="multipart/form-data" action="/upload" method="post">
 				<tr>
-					<td colspan="2">Flight report (public) uploads:
-						provide a log with additional infos so that the PX4
-						community can use it to improve the flight
-						stack.</td>
+					<td colspan="2">항해 리포트 (공용) 업로드:
+						Bada Project에서 SW 개선을 위해 log 파일을 제공합니다.</td>
 				</tr>
 				<tr>
 					<td></td><td>
@@ -112,19 +109,19 @@ You can browse through public log files on <a href="/browse">this page</a>.
 					</td>
 				</tr>
 				<tr>
-					<td class="left">Test Description:</td>
+					<td class="left">Test 설명:</td>
 					<td>
 						<input class="form-control" placeholder="" name="description" type="text">
 					</td>
 				</tr>
 				<tr>
-					<td class="left">Additional Feedback:</td>
+					<td class="left">추가 피드백:</td>
 					<td>
 						<textarea class="form-control" cols="20" rows="3" name="feedback"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">Vehicle Name <small>(optional)</small>:
+					<td class="left">배 이름 <small>(옵션)</small>:
 					<td>
 						<input class="form-control" placeholder="" name="vehicleName" type="text">
 					</td>
@@ -136,30 +133,30 @@ You can browse through public log files on <a href="/browse">this page</a>.
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><small>May be used to request additional information.</small></td>
+					<td colspan="2"><small>추가 정보 요청에 사용될 수도 있습니다.</small></td>
 				</tr>
 				<tr>
-					<td class="left">Wind Speed:</td><td>
+					<td class="left">바람 속도:</td><td>
 						<select class="custom-select" name=windSpeed>
-							<option value="-1" selected="selected">Please select</option>
+							<option value="-1" selected="selected">선택해주세요</option>
 							<!-- Beafort Scale -->
-							<option value="0">Calm</option>
-							<option value="5">Breeze</option>
-							<option value="8">Gale</option>
-							<option value="10">Storm</option>
+							<option value="0">거의 없음</option>
+							<option value="5">살짝</option>
+							<option value="8">바람 많이</option>
+							<option value="10">강풍</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">Flight Rating:</td>
+					<td class="left">항해 별점:</td>
 					<td>
 						<select class="custom-select" name="rating">
-							<option value="notset" selected="selected">Please select</option>
-							<option value="crash_pilot">Crashed (Pilot error)</option>
-							<option value="crash_sw_hw">Crashed (Software or Hardware issue)</option>
-							<option value="unsatisfactory">Unsatisfactory</option>
-							<option value="good">Good</option>
-							<option value="great">Great!</option>
+							<option value="notset" selected="selected">선택해주세요</option>
+							<option value="crash_pilot">Crashed (조종사 error)</option>
+							<option value="crash_sw_hw">Crashed (소프트웨어 혹은 하드웨어 문제)</option>
+							<option value="unsatisfactory">불만족</option>
+							<option value="good">만족</option>
+							<option value="great">대만족!</option>
 						</select>
 					</td>
 				</tr>
@@ -200,9 +197,7 @@ You can browse through public log files on <a href="/browse">this page</a>.
 
 
 <p>
-<b>Important</b>: The log may contain location data. By uploading a log,
-you agree that this information is stored on the server. Should you choose to
-share the link, it will be accessible to others as well.
+<b>중요</b>: log에는 위치 정보가 있을 수 있습니다. log를 업로드하면 관련 정보가 서버에 저장되는 것에 동의하는 것입니다.
 </p>
 
 
